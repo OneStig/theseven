@@ -8,35 +8,62 @@ interface SwapAnimationProps {
   swapOrder: number[];
 }
 
+const generateRandomPermutation = (arr: number[]) => {
+  let result = [...arr];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+};
+
 const SwapAnimation: React.FC<SwapAnimationProps> = ({ str, swapOrder }) => {
   const [swapped, setSwapped] = useState(false);
+  const [randomOrder, setRandomOrder] = useState<number[]>([]);
+  const [stage, setStage] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setSwapped(true);
-    }, 1500);
+      setRandomOrder(generateRandomPermutation(swapOrder));
+      setStage(1);
+    }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [swapOrder]);
+
+  useEffect(() => {
+    if (stage === 1) {
+      const timer = setTimeout(() => {
+        setStage(2);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [stage]);
 
   const letterWidth = 23;
   const springs = useSprings(
     str.length,
-    str.split('').map((_, index) => ({
-      transform: swapped ? `translateX(${(swapOrder[index] - index) * letterWidth}px)` : 'translateX(0px)',
-      config: { duration: 500 },
-      delay: index * 100,
-    }))
+    str.split('').map((_, index) => {
+      let targetIndex;
+      if (stage === 1) {
+        targetIndex = randomOrder[index];
+      } else if (stage === 2) {
+        targetIndex = swapOrder[index];
+      } else {
+        targetIndex = index;
+      }
+      return {
+        transform: `translateX(${(targetIndex - index) * letterWidth}px)`,
+        config: { duration: 500 },
+        delay: index * 100,
+      };
+    })
   );
-
-  const toggleSwap = () => {
-    setSwapped(!swapped);
-  };
 
   return (
     <div style={{ textAlign: 'left' }}>
       <h1 
-        onClick={toggleSwap} 
         style={{ 
           position: 'relative', 
           display: 'inline-block', 

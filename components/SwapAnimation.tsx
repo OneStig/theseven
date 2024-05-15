@@ -1,18 +1,33 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useSpring, animated } from '@react-spring/web';
+import React, { useState, useEffect } from 'react';
+import { useSprings, animated, config } from '@react-spring/web';
 
-const SwapAnimation: React.FC = () => {
+interface SwapAnimationProps {
+  str: string;
+  swapOrder: number[];
+}
+
+const SwapAnimation: React.FC<SwapAnimationProps> = ({ str, swapOrder }) => {
   const [swapped, setSwapped] = useState(false);
 
-  const springPropsA = useSpring({
-    transform: swapped ? 'translateX(50px)' : 'translateX(0px)',
-  });
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSwapped(true);
+    }, 1500);
 
-  const springPropsB = useSpring({
-    transform: swapped ? 'translateX(-50px)' : 'translateX(0px)',
-  });
+    return () => clearTimeout(timer);
+  }, []);
+
+  const letterWidth = 23;
+  const springs = useSprings(
+    str.length,
+    str.split('').map((_, index) => ({
+      transform: swapped ? `translateX(${(swapOrder[index] - index) * letterWidth}px)` : 'translateX(0px)',
+      config: { duration: 500 },
+      delay: index * 100,
+    }))
+  );
 
   const toggleSwap = () => {
     setSwapped(!swapped);
@@ -25,12 +40,25 @@ const SwapAnimation: React.FC = () => {
         style={{ 
           position: 'relative', 
           display: 'inline-block', 
-          width: '100px', 
-          cursor: 'pointer' 
+          width: `${str.length * letterWidth}px`, 
+          cursor: 'pointer',
+          whiteSpace: 'nowrap'
         }}
       >
-        <animated.span style={{ ...springPropsA, position: 'absolute', left: 0 }}>A</animated.span>
-        <animated.span style={{ ...springPropsB, position: 'absolute', left: '50px' }}>B</animated.span>
+        {springs.map((spring, index) => (
+          <animated.span 
+            key={index} 
+            style={{ 
+              ...spring, 
+              position: 'absolute', 
+              width: `${letterWidth}px`,
+              textAlign: 'center',
+              left: `${index * letterWidth}px`
+            }}
+          >
+            {str[index]}
+          </animated.span>
+        ))}
       </h1>
     </div>
   );

@@ -9,10 +9,12 @@ export default function Home() {
     month: "long",
     day: "numeric",
   });
-  
+
+  const str = 'theseven.dev';
+  const swapOrder = [1, 6, 7, 0, 2, 3, 4, 5, 8, 9, 10, 11];
   return (
     <main>
-      <SwapAnimation />
+      <SwapAnimation str={str} swapOrder={swapOrder} />
       <p className="author">Steven He <br /> {formattedDate}</p>
     </main>
   )

@@ -4,20 +4,20 @@ import Abstract from "./abstract";
 
 export default function Home() {
   const currentDate = new Date();
-  
+
   const formattedDate = currentDate.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 
-  const str = 'theseven.dev';
-  const swapOrder = [1, 6, 7, 0, 2, 3, 4, 5, 8, 9, 10, 11];
+  const str = 'the seven';
+  const swapOrder = [1, 7, 8, 6, 0, 4, 3, 2, 5];
 
   return (
     <main>
       <SwapAnimation str={str} swapOrder={swapOrder} />
-      <p className="author"><br/>{formattedDate}</p>
+      <p className="author"><br />{formattedDate}</p>
       <Abstract />
     </main>
   )

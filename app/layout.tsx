@@ -9,7 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="latex-dark">{children}</body>
+      <body className="latex-light">{children}</body>
     </html>
   );
 }

@@ -62,7 +62,7 @@ const SwapAnimation: React.FC<SwapAnimationProps> = ({ str, swapOrder }) => {
   );
 
   return (
-    <div style={{ textAlign: 'left' }}>
+    <div style={{ textAlign: 'center' }}>
       <h1 
         style={{ 
           position: 'relative', 

@@ -1,4 +1,5 @@
-import Image from "next/image";
+// import Image from "next/image";
+import SwapAnimation from "@/components/SwapAnimation";
 
 export default function Home() {
   const currentDate = new Date();
@@ -11,6 +12,7 @@ export default function Home() {
   
   return (
     <main>
+      <SwapAnimation />
       <p className="author">Steven He <br /> {formattedDate}</p>
     </main>
   )

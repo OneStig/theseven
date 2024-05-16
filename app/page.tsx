@@ -3,6 +3,8 @@ import SwapAnimation from "@/components/SwapAnimation";
 import Abstract from "./abstract";
 import Contents from "./contents";
 import Contact from "./contact";
+import MyWork from "./mywork";
+import Photos from "./photos";
 
 export default function Home() {
   const currentDate = new Date();
@@ -26,6 +28,8 @@ export default function Home() {
       <Contents />
       <article>
         <Contact />
+        <MyWork />
+        <Photos />
       </article>
     </main>
   )

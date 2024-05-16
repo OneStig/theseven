@@ -14,6 +14,7 @@ export default function Contents() {
           </ol>
         </li>
 
+        <li><a href="#dotfiles">Dotfiles</a></li>
         <li><a href="#photo-gallery">I&apos;m not a photographer...</a></li>
       </ol>
     </nav>

@@ -4,6 +4,7 @@ import Abstract from "./abstract";
 import Contents from "./contents";
 import Contact from "./contact";
 import MyWork from "./mywork";
+import Dotfiles from "./dotfiles";
 import Photos from "./photos";
 
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
       <article>
         <Contact />
         <MyWork />
+        <Dotfiles />
         <Photos />
       </article>
     </main>

@@ -34,8 +34,8 @@ export default function MyWork() {
                 <tbody>
                     <tr>
                         <td>2024-May-18</td>
-                        <td>2023-24 SoCal Regional</td>
-                        <td>#24</td>
+                        <td>CodeSprint LA 2024</td>
+                        <td>?</td>
                     </tr>
                     <tr>
                         <td>2023-Oct-28</td>

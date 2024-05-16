@@ -8,7 +8,7 @@ export default function Abstract() {
         Most of the time I&apos;m learning about or working with all things algorithms
         so I can build cool projects and compete in programming contests.
         Feel free to contact me if you&apos;d like to talk to me about anything related to programming
-        (ICPC, compilers, pedagogy etc.), powerlifting,
+        (ICPC, compilers, dsa, pedagogy etc.), powerlifting, basketball,
         or <a href="https://lighterpack.com/r/8o0ew1">backpacking</a>!
       </p>
     </div>

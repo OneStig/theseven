@@ -9,6 +9,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <title>Steven He</title>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className="latex-light">{children}</body>
     </html>
   );

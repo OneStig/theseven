@@ -13,7 +13,7 @@ export default function RootLayout({
         <title>Steven He</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="latex-light">{children}</body>
+      <body className="latex-dark">{children}</body>
     </html>
   );
 }

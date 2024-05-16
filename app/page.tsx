@@ -2,6 +2,7 @@
 import SwapAnimation from "@/components/SwapAnimation";
 import Abstract from "./abstract";
 import Contents from "./contents";
+import Contact from "./contact";
 
 export default function Home() {
   const currentDate = new Date();
@@ -23,6 +24,9 @@ export default function Home() {
       </header>
       <Abstract />
       <Contents />
+      <article>
+        <Contact />
+      </article>
     </main>
   )
 }
